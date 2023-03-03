@@ -10,13 +10,14 @@
 </head>
 <body>
     <nav id="nav"> </nav>
-
+    <footer id="footer"></footer>
 
 </body>
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
-    import {getNavbar} from './modules/main-elements.js'
+    import {getNavbar,getFooter} from './modules/main-elements.js'
 
-    getNavbar('nav')
+    getNavbar('nav','post')
+    getFooter('footer')
 </script>
 </html>

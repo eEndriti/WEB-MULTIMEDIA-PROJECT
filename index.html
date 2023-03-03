@@ -5,31 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Home</title>
 </head>
 <body>
     <nav id="nav"> </nav>
     
-    <div class="tip d-flex justify-content-center mt-5">
-        <h2>Tip:For a better view on codes,go by categories!</h2>
+    <div class="tip d-flex justify-content-center mt-5 ">
+        <h2 class="border-bottom border-dark">Tip:For a better view on codes,go by categories!</h2>
     </div>
     <br><br>
-    <section id="topCodes">
-        <div class="container bg-dark text-light text-center">
-            <div class="first-text">
-                <h2>Top Used Codes:</h2>
+    
+    <section id="topAni" class="container-fluid m-0 p-0">  
+        <div class="first-text text-light d-flex justify-content-start  p-1">
+            <h4>Top Rated Animations:</h4>
+        </div>      
+            <div class="content container m-4">
+                <img src="./assets/images/gifs/g1.gif" alt="">
             </div>
-            <div class="content">
-                <img src="" alt="">
-            </div>
-        </div>
     </section>
+
+    <section id="topCategories" class="container-fluid m-0 p-0">  
+        <div class="first-text text-light d-flex justify-content-start p-1">
+            <h4>Top Clicked Categories:</h4>
+        </div>      
+            <div class="content container m-4">
+                <img src="./assets/images/gifs/g1.gif" alt="">
+            </div>
+    </section>
+
+    <section id="topSources" class="container-fluid m-0 p-0">  
+        <div class="first-text text-light d-flex justify-content-start p-1">
+            <h4>Top Rated Sources:</h4>
+        </div>      
+            <div class="content container m-4">
+                <img src="./assets/images/gifs/g1.gif" alt="">
+            </div>
+    </section>
+
+    <footer id="footer">
+       
+    </footer>
 
 </body>
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
-    import {getNavbar} from './modules/main-elements.js'
+    import {getNavbar,getFooter} from './modules/main-elements.js'
 
-    getNavbar('nav')
+    getNavbar('nav','index')
+    getFooter('footer')
 </script>
 </html>
