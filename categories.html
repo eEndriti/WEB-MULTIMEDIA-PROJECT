@@ -11,15 +11,8 @@
 <body>
     <nav id="nav"> </nav>
 
-    <section id="section">
-        <div class="container categories-section my-5 p-5 border-circle">
-            <a href="#">Category</a>
-            <a href="#">Category</a>
-            <a href="#">Category</a>
-            <a href="#">Category</a>
-            <a href="#">Category</a>
-            <a href="#">Category</a>
-        </div>
+    <section id="section" class="container categories-section my-5 p-5 border-circle">
+            
     </section>
 
     <footer id="footer"></footer>
@@ -28,8 +21,10 @@
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
     import {getNavbar,getFooter} from './modules/main-elements.js'
+    import {getCategories} from './modules/categories.js'
 
     getNavbar('nav','categories')
     getFooter('footer')
+    getCategories('section')
 </script>
 </html>

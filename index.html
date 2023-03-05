@@ -20,9 +20,9 @@
         <div class="first-text text-light d-flex justify-content-start  p-1">
             <h4>Top Rated Animations:</h4>
         </div>      
-            <div class="content container m-4">
-                <img src="./assets/images/gifs/g1.gif" alt="">
-            </div>
+           <div id="gif" class="container d-flex flex-row flex-wrap">
+
+           </div>
     </section>
 
     <section id="topCategories" class="container-fluid m-0 p-0">  
@@ -51,8 +51,10 @@
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
     import {getNavbar,getFooter} from './modules/main-elements.js'
+    import {getGifs} from './modules/gifs.js'
 
     getNavbar('nav','index')
     getFooter('footer')
+    getGifs('gif',4)
 </script>
 </html>
