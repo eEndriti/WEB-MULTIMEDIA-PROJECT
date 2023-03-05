@@ -5,19 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-
     <title>View Code</title>
 </head>
 <body>
     <nav id="nav"> </nav>
+
+    <section id="gifDetails" class="container d-flex justify-content-center flex-column mt-5">
+       
+    </section>
+    <br><br><br><br><br><br>
     <footer id="footer"></footer>
 
 </body>
+
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
     import {getNavbar,getFooter} from './modules/main-elements.js'
-
-    getNavbar('nav','')
+    import {renderGif} from './modules/gifs.js'
+    getNavbar('nav','0')
     getFooter('footer')
+    renderGif('gifDetails',2)
 </script>
 </html>
