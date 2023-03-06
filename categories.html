@@ -10,12 +10,20 @@
 </head>
 <body>
     <nav id="nav"> </nav>
+    <br><br><br><br><br><br><br>
+    <section id="section" class="container categories-section my-5 p-3 rounded d-flex flex-wrap justify-content-center align-content-center">
+        <div id="loadingc" class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>  
+        <div id="loadCategories" class="d-none d-flex flex-wrap flex-row">
 
-    <section id="section" class="container categories-section my-5 p-5 rounded d-flex flex-wrap">
-            
+        </div>
     </section>
-
-    <footer id="footer"></footer>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <footer id="footer" class="mt-5"></footer>
 
 </body>
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
@@ -25,6 +33,6 @@
 
     getNavbar('nav','categories')
     getFooter('footer')
-    getCategories('section')
+    getCategories('loadCategories')
 </script>
 </html>

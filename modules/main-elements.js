@@ -21,7 +21,7 @@ export function getNavbar(div,element){
                     <a class="nav-link " id="about" href="./about.html">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " id="contact" href="./view-code.html">Contact</a>
+                    <a class="nav-link " id="contact" href="./contact.html">Contact</a>
                 </li>
                 </ul>
             </div>
@@ -46,3 +46,11 @@ export function getFooter(div){
 </div>`
     document.getElementById(div).innerHTML = html
 }
+
+export function getItemFromURL(url, item) {
+    if(!url.includes('?')) return null
+    const url_sp = new URLSearchParams(url.split('?')[1])
+    return url_sp.get(item)
+    
+  }
+  

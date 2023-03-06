@@ -11,13 +11,28 @@
 </head>
 <body>
     <nav id="nav"> </nav>
+
+    <section class="container-fluid d-flex justify-content-center p-5 flex-row flex-wrap">
+        <div id="loading" class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>  
+        <div id="gifs" class="d-flex justify-content-center flex-row flex-wrap d-none"></div>
+    </section>
+
     <footer id="footer"></footer>
 
 </body>
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
-    import {getNavbar,getFooter} from './modules/main-elements.js'
+    import {getNavbar,getFooter,getItemFromURL} from './modules/main-elements.js'
+    import {renderGifsByCategory} from './modules/gifs.js'
 
+    const id = getItemFromURL(document.URL,'id')
+
+    renderGifsByCategory('gifs',id)
     getNavbar('nav','')
     getFooter('footer')
 </script>

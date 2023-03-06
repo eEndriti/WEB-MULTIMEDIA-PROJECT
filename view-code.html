@@ -10,8 +10,14 @@
 <body>
     <nav id="nav"> </nav>
 
-    <section id="gifDetails" class="container d-flex justify-content-center flex-column mt-5">
-       
+    <section class="container d-flex justify-content-center flex-column mt-5">
+        <div id="loading" class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>  
+        <div id="gifDetails" class="d-flex justify-content-center flex-column mt-5 d-none"></div>
     </section>
     <br><br><br><br><br><br>
     <footer id="footer"></footer>
@@ -20,10 +26,14 @@
 
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
-    import {getNavbar,getFooter} from './modules/main-elements.js'
+    import {getNavbar,getFooter,getItemFromURL} from './modules/main-elements.js'
     import {renderGif} from './modules/gifs.js'
+
+    const id = getItemFromURL(document.URL,'id')
+
+    
     getNavbar('nav','0')
     getFooter('footer')
-    renderGif('gifDetails',2)
+    renderGif('gifDetails',id)
 </script>
 </html>

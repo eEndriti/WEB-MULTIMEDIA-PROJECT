@@ -14,7 +14,7 @@ export function getGifs(div,limit){
                     <h5 class="card-title">${gif.title}</h5>
                     <p class="card-text">Source:<span>Online</span></p>
                     <p class="card-text">Content:<span>HTML CSS JS</span></p>
-                    <a href="#" class="btn w-100">View Details...</a>
+                    <a href="view-code.html?id=${gif.id}" class="btn w-100">View Details...</a>
                     </div>
                 </div>
             `
@@ -23,8 +23,9 @@ export function getGifs(div,limit){
            
         })
             
-        
+        document.getElementById('loading').classList.add('d-none')
         document.getElementById(div).innerHTML = composeHTML
+        document.getElementById(div).classList.remove('d-none')
     })
    
 }
@@ -57,6 +58,38 @@ export function renderGif(div,id){
                 </div>
            `
 
-           document.getElementById(div).innerHTML = composeHTML
+        document.getElementById('loading').classList.add('d-none')
+        document.getElementById(div).innerHTML = composeHTML
+        document.getElementById(div).classList.remove('d-none')
+        })
+}
+
+export function renderGifsByCategory(div,id){
+    let composeHTML = ''
+    fetch(`https://63bdd384e348cb0762043976.mockapi.io/gifs`)
+    .then(response => response.json())
+    .then(gifs =>{       
+                  
+            gifs.forEach(gif =>{
+                
+                if(gif.category == id){
+                    composeHTML += `   
+                
+                <div class="card m-3" style="width: 18rem; ">
+                        <img src="${gif.gif}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${gif.title}</h5>
+                        <p class="card-text">Source:<span>Online</span></p>
+                        <p class="card-text">Content:<span>HTML CSS JS</span></p>
+                        <a href="view-code.html?id=${gif.id}" class="btn w-100">View Details...</a>
+                    </div>
+                </div>
+                    `
+                }
+            })
+
+            document.getElementById('loading').classList.add('d-none')
+        document.getElementById(div).innerHTML = composeHTML
+        document.getElementById(div).classList.remove('d-none')
         })
 }
