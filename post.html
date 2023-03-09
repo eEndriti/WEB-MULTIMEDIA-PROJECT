@@ -12,24 +12,30 @@
 <body>
     <nav id="nav"> </nav>
     <br><br>
-    <div class="text d-flex justify-content-center"><h1 class="text-center border-bottom border-dark fw-bold fs-2" style="width: fit-content;">We need your email to contact you, if we have trouble implementing your code!</h1></div>
+    <div class="text d-flex justify-content-center" id="first-text"><h1 class="text-center border-bottom border-dark fw-bold fs-2" style="width: fit-content;">We need your email to contact you, if we have trouble implementing your code!</h1></div>
     
     <section id="form">
-        <form class="d-flex align-items-center flex-column ">
-            <input required type="email" name="email" placeholder="Email..." class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5">
-            <input required class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5" type="text" name="source" placeholder="Source Code(Who wrote this code)...">
+        <center><div id="loading" class="lds-ellipsis d-none">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>  </center>
+        <form class="d-flex align-items-center flex-column " id="form2">
+            <input id="email" required type="email" name="email" placeholder="Email..." class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5">
+            <input id="source" required class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5" type="text" name="source" placeholder="Source Code(Who wrote this code)...">
         
         <div class="codes  d-flex justify-content-center m-3 w-100">
             <label for="t1" class="fw-bold">HTML:</label>
-            <textarea required name="t1" class="html m-3 w-25 p-1 rounded" rows="10"></textarea>
+            <textarea id="html" required name="t1" class="html m-3 w-25 p-1 rounded" rows="10"></textarea>
             <label for="t2" class="fw-bold">CSS:</label>
-            <textarea required name="t2"  class="css m-3 w-25 p-1 rounded" rows="10"></textarea>
+            <textarea id="css" required name="t2"  class="css m-3 w-25 p-1 rounded" rows="10"></textarea>
             <label for="t3" class="fw-bold">Javascript:</label>
-            <textarea required name="t3"  class="js m-3 w-25 p-1 rounded" rows="10"></textarea>
+            <textarea id="js" required name="t3"  class="js m-3 w-25 p-1 rounded" rows="10"></textarea>
             
             </div>
         <div class="d-flex justify-content-center">
-            <button class=" rounded fs-3 py-1 px-5 fw-bold sb">SUBMIT</button>
+            <button class=" rounded fs-3 py-1 px-5 fw-bold sb" id="submit">SUBMIT</button>
         </div>
     </form>
     </section>
@@ -40,8 +46,22 @@
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
     import {getNavbar,getFooter} from './modules/main-elements.js'
+    import {postCode} from './modules/post.js'
 
     getNavbar('nav','post')
     getFooter('footer')
+    
+    let i = document.getElementById('form')
+    
+    i.addEventListener('submit', ev =>{
+        ev.preventDefault()
+        let email = document.getElementById('email').value
+        let source = document.getElementById('source').value
+        let html = document.getElementById('html').value
+        let css = document.getElementById('css').value
+        let js = document.getElementById('js').value
+        postCode(email,source,html,css,js)
+    })
+    
 </script>
 </html>

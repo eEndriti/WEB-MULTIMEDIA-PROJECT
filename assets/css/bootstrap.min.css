@@ -179,7 +179,7 @@ textarea,.description{
     background-color: rgba(16, 43, 87, 0.2);
   }
   .contact input{
-    border: 1px solid white;
+    border: 1px solid rgb(0, 0, 0);
   }
   .lds-ellipsis {
     display: inline-block;

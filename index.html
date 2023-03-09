@@ -129,12 +129,12 @@
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
     import {getNavbar,getFooter} from './modules/main-elements.js'
-    import {getGifs} from './modules/gifs.js'
+    import {MostClickedGifs} from './modules/gifs.js'
     import {MostClickedCategories} from './modules/categories.js'
 
     getNavbar('nav','index')
     getFooter('footer')
-    getGifs('gif',4)
+    MostClickedGifs('gif',4)
     MostClickedCategories('MostClickedCategories',6)
 </script>
 </html>

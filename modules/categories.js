@@ -24,16 +24,19 @@ export function MostClickedCategories(div,limit){
     .then(categories =>{
 
         let i = 0
-        categories.forEach(category =>{
-
-           if(i<limit){
+        
+        categories.sort((a, b) => b.clicks - a.clicks);
+        const topCategories = categories.slice(0, limit);
+        topCategories.forEach(category =>{
+            if(i<limit){
                 composeHTML += `    
-                <a class="rounded p-2 text-light" href="#">${category.name}.........................................................${category.clicks} Clicks</a>
+                <a class="rounded p-2 text-light" href="view-category.html?id=${category.id}">${category.name}.........................................................${category.clicks} Clicks</a>
                 `
                 i++
            }
-
+            
         })
+   
         document.getElementById('loadingc').classList.add('d-none')
         document.getElementById(div).innerHTML = composeHTML
         document.getElementById(div).classList.remove('d-none')

@@ -17,9 +17,7 @@ export function getNavbar(div,element){
                 <li class="nav-item">
                     <a class="nav-link " id="post" href="./post.html">Post Animation</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " id="about" href="./about.html">About</a>
-                </li>
+               
                 <li class="nav-item">
                     <a class="nav-link " id="contact" href="./contact.html">Contact</a>
                 </li>
