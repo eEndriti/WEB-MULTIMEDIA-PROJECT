@@ -22,10 +22,10 @@ ul{
     list-style-type: none;
 }
 ul li:hover{
-    color: var(--mainbg) !important;
     cursor: pointer;
     border-top: 1px solid var(--mainbg);
 }
+
 body{
     background-color: var(--mainbg);
 }
@@ -44,7 +44,10 @@ body{
     text-decoration: none;
     color: white !important;
 }
+#nav a:hover{
+  color: var(--mainbg) !important;
 
+}
 .card{
     background-color: rgba(16, 43, 87, 0.2) !important;
     color: white !important;
@@ -165,7 +168,12 @@ textarea,.description{
   }
   input{
     outline: none;
+    
   }
+  .modal-body input{
+    padding: 0.5vh;
+  }
+ 
   .sb{
     background-color: var(--darkbg);
     color: white;
@@ -178,8 +186,11 @@ textarea,.description{
   .contactForm{
     background-color: rgba(16, 43, 87, 0.2);
   }
-  .contact input{
+  .contact input,.content input{
     border: 1px solid rgb(0, 0, 0);
+  }
+  .admin-input{
+    background-color: rgba(16, 43, 87, 0.2);
   }
   .lds-ellipsis {
     display: inline-block;
@@ -236,3 +247,20 @@ textarea,.description{
       transform: translate(24px, 0);
     }
   }
+ .fa-unlock{
+  display: none !important;
+ }
+.login-btn:hover > .fa-lock{
+  display: none !important;
+}
+.login-btn:hover > .fa-unlock{
+  display:inline !important;
+}
+.content form{
+  border: 1px solid ;
+}
+.content form button:hover{
+  background-color: var(--darkbg) !important;
+  transition: 0.5s ease-in-out;
+
+}

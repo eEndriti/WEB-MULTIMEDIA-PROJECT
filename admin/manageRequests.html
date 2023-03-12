@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
+    <title>Manage Gifs</title>
+</head>
+<body>
+    <nav id="nav"> 
+
+    </nav>
+
+    <section>
+        <center>
+         <div id="loading" class="lds-ellipsis">
+             <div></div>
+             <div></div>
+             <div></div>
+             <div></div>
+         </div> 
+        </center>
+         <div class="container">
+             <div class="row table-responsive my-4">
+                 <table id="table" class="table-bordered text-light text-center" style="border:1px solid black">
+                    
+                 </table>
+             </div>
+         </div>
+     </section>
+
+    <footer id="footer">
+       
+    </footer>
+
+    <div class="modal fade" id="editReqModal" tabindex="-1" aria-labelledby="editReqLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="editReqLabel">Edit Request</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="d-flex flex-column justify-content-center">
+                    
+                        <label for="id">Request ID:</label> 
+                        <input type="number" name="id" id="req-id" disabled required>            
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="req-email" required disabled>
+                        <label for="postedBy">Posted By:</label>
+                        <input type="text" name="postedBy" id="req-postedBy" required disabled>
+                        <label for="title">Title:</label>
+                        <input type="text" name="title" id="req-title" required> 
+                        <label for="source">Source:</label>
+                        <input type="text" name="source" id="req-source" required >
+                        <select name="selectCtg" id="select-ctg" class="my-2">                                           
+                        </select>
+                        <label for="image">Image:</label>
+                        <input type="link" name="image" id="req-image" required >
+                        
+                    <div class="areas d-flex flex-row justify-content-center m-1">
+                        <textarea  rows="10" class="m-2 form-control" id="req-html"></textarea>
+                        <textarea  rows="10" class="m-2 form-control" id="req-css"></textarea>
+                        <textarea rows="10" class="m-2 form-control" id="req-js"></textarea>
+                   </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="acceptReqButton">Accept Request</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</body>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+
+if(localStorage.getItem('kaAdmin') !== 'true'){
+        alert('You need to log in to advance!')
+        location.href = '/admin.html'
+    }
+
+    import {getNavbar,getFooter} from '../modules/main-elements.js'
+    import {getAdminReq,deleteReq,getSpecificReq,acceptRequest} from '../modules/manageReqMsg.js'   
+
+    getNavbar('nav','mr')
+    getFooter('footer')
+    getAdminReq('table')
+    const parent = document.querySelector("#table");
+                parent.addEventListener("click", function(event) {
+                    var buttonValue = event.target.getAttribute("value");
+                    if(event.target && event.target.id === "deleteReq") {
+                        deleteReq(buttonValue)
+                    }else if(event.target && event.target.id === "editReq") {
+                        getSpecificReq(buttonValue) 
+                    }
+            });
+
+    let accept = document.getElementById('acceptReqButton')
+    accept.addEventListener('click',ev=>{
+        ev.preventDefault()
+        acceptRequest()
+    })
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
+</script>
+</html>

@@ -59,5 +59,11 @@
         postMessage(email,subject,msg)
     })
 
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
 </script>
 </html>

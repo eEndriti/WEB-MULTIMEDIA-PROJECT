@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>Admin</title>
+</head>
+<body>
+    <nav id="nav"> </nav>
+    <br><br><br><br>
+    <section id="admin-login" class="container ">
+        <div class="content d-flex justify-content-center  m-5">
+            <form id="form" class="d-flex flex-column w-50 align-self-center p-5">
+                <input type="email" id="email" required placeholder="Email..." class="admin-input m-1 p-2">
+                <input type="password" id="ps" required placeholder="Password..." class="admin-input m-1 p-2">
+                <button class="py-2 px-5 m-1 fw-bold bg-transparent text-light">SUBMIT</button>
+            </form>
+        </div>
+    </section>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br>
+    <footer id="footer" class="mt-4">    
+    </footer>
+
+</body>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+    import {getNavbar,getFooter} from './modules/main-elements.js'
+   
+
+    getNavbar('nav','admin-btn')
+    getFooter('footer')
+
+    let x = document.getElementById('form')
+    x.addEventListener('submit', ev=>{
+        ev.preventDefault()
+
+        let email = document.getElementById('email').value
+        let ps = document.getElementById('ps').value
+
+        if(email == 'ad@gmail.com' && ps == '123'){
+            localStorage.setItem('kaAdmin','true')
+            location.href = './admin/manageGifs.html'
+        }else alert('out')
+    })
+
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
+</script>
+</html>

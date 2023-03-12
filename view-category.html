@@ -23,17 +23,26 @@
     </section>
 
     <footer id="footer"></footer>
-
+    
 </body>
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
-    import {getNavbar,getFooter,getItemFromURL} from './modules/main-elements.js'
+    import {getNavbar,getFooter,getItemFromURL,editClicks} from './modules/main-elements.js'
     import {renderGifsByCategory} from './modules/gifs.js'
 
     const id = getItemFromURL(document.URL,'id')
 
     renderGifsByCategory('gifs',id)
-    getNavbar('nav','')
+    getNavbar('nav','0')
     getFooter('footer')
+    
+    editClicks('categories',id)
+
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
 </script>
 </html>

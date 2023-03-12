@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
+    <title>Manage Gifs</title>
+</head>
+<body>
+    <nav id="nav"> 
+
+    </nav>
+
+    <section>
+       <center>
+        <div id="loading" class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div> 
+       </center>
+        <div class="container">
+            <div class="row table-responsive my-4">
+                <table id="table" class="table-bordered text-light text-center" style="border:1px solid black">
+                   
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+       
+    </footer>
+
+
+
+</body>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+
+if(localStorage.getItem('kaAdmin') !== 'true'){
+        alert('You need to log in to advance!')
+        location.href = '/admin.html'
+    }
+    
+    import {getNavbar,getFooter} from '../modules/main-elements.js'
+    import {getAdminGifs,deleteGif} from '../modules/gifs.js'   
+
+    getNavbar('nav','mg')
+    getFooter('footer')
+    getAdminGifs('table')
+
+    const parent = document.querySelector("#table");
+                parent.addEventListener("click", function(event) {
+                    var buttonValue = event.target.getAttribute("value");
+                    if(event.target && event.target.id === "deleteGif") {
+                        deleteGif(buttonValue)
+                    }
+            });
+
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
+
+   
+   
+</script>
+</html>

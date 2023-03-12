@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
     <title>View Code</title>
 </head>
 <body>
@@ -26,8 +28,8 @@
 
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script type="module">
-    import {getNavbar,getFooter,getItemFromURL} from './modules/main-elements.js'
-    import {renderGif} from './modules/gifs.js'
+    import {getNavbar,getFooter,getItemFromURL,editClicks} from './modules/main-elements.js'
+    import {renderGif,editGifClicks} from './modules/gifs.js'
 
     const id = getItemFromURL(document.URL,'id')
 
@@ -35,5 +37,14 @@
     getNavbar('nav','0')
     getFooter('footer')
     renderGif('gifDetails',id)
+
+    editClicks('gifs',id)
+
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
 </script>
 </html>

@@ -22,9 +22,14 @@
             <div></div>
         </div>  </center>
         <form class="d-flex align-items-center flex-column " id="form2">
-            <input id="email" required type="email" name="email" placeholder="Email..." class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5">
-            <input id="source" required class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5" type="text" name="source" placeholder="Source Code(Who wrote this code)...">
+            <div class="d-flex flex-row flex-wrap justify-content-center container">
+                <input id="title" required type="text" name="title" placeholder="Title..." class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5">
+                <input id="postedBy" required class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5" type="text" name="postedBy" placeholder="Posted By(Who posted this code)...">
         
+                <input id="email" required type="email" name="email" placeholder="Email..." class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5">
+                <input id="source" required class="border-dark rounded bg-transparent w-25 p-2 m-2 fs-5" type="text" name="source" placeholder="Source Code(Who wrote this code)...">
+        
+            </div>
         <div class="codes  d-flex justify-content-center m-3 w-100">
             <label for="t1" class="fw-bold">HTML:</label>
             <textarea id="html" required name="t1" class="html m-3 w-25 p-1 rounded" rows="10"></textarea>
@@ -55,13 +60,21 @@
     
     i.addEventListener('submit', ev =>{
         ev.preventDefault()
+        let title = document.getElementById('title').value
+        let postedBy = document.getElementById('postedBy').value
         let email = document.getElementById('email').value
         let source = document.getElementById('source').value
         let html = document.getElementById('html').value
         let css = document.getElementById('css').value
         let js = document.getElementById('js').value
-        postCode(email,source,html,css,js)
+        postCode(title,postedBy,email,source,html,css,js)
     })
     
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
 </script>
 </html>

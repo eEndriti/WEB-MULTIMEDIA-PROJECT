@@ -1,3 +1,5 @@
+
+
 export function getGifs(div,limit){
     let composeHTML = ''
     fetch(`https://63bdd384e348cb0762043976.mockapi.io/gifs`)
@@ -128,4 +130,87 @@ export function MostClickedGifs(div,limit){
         
     })
    
+}
+export function getAdminGifs(div){
+    
+    let composeHTML = ''
+    let i = 1
+    fetch(`https://63bdd384e348cb0762043976.mockapi.io/gifs`)
+    .then(response => response.json())
+    .then(gifs =>{       
+                 
+        composeHTML += `
+        <tr class="fs-5 bg-dark fw-bold">
+            <td style="border-bottom:2px solid #102b57 !important">Nr.</td>
+            <td style="border-bottom:2px solid #102b57 !important">Title</td>
+            <td style="border-bottom:2px solid #102b57 !important">Category</td>
+            <td style="border-bottom:2px solid #102b57 !important">Source</td>
+            <td style="border-bottom:2px solid #102b57 !important">Posted By</td>
+            <td style="border-bottom:2px solid #102b57 !important">Content</td>
+            <td style="border-bottom:2px solid #102b57 !important">Clicks</td>
+            <td style="border-bottom:2px solid #102b57 !important">Gif</td>
+            <td style="border-bottom:2px solid #102b57 !important">Options</td>
+        </tr>
+        `
+        gifs.forEach(gif =>{
+                    i++           
+                    composeHTML += `
+                <tr>
+                    <td>${i}</td>
+                    <td>${gif.title}</td>
+                    <td>${gif.category}</td>
+                    <td>${gif.source}</td>
+                    <td>${gif.postedBy}</td>
+                    <td>${gif.content}</td>
+
+                    <td>${gif.clicks}</td>
+                    <td><img src="${gif.gif}" class="img-fluid p-1 rounded" style="width:20vh"/></td>
+                    <td class="p-1">
+                    
+                    <button type="button" id="deleteGif" class="btn btn-outline-danger fw-bold " style="background-color:transparent !important;color:white;border:2px solid red !important"  value="${gif.id}">Delete</button></td>
+                </tr>
+            `
+           
+        })
+            
+        document.getElementById('loading').classList.add('d-none')
+        document.getElementById(div).innerHTML = composeHTML
+        document.getElementById(div).classList.remove('d-none')
+    })
+}
+
+export function deleteGif(id){
+
+    fetch(`https://63bdd384e348cb0762043976.mockapi.io/gifs/${id}`, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        }
+    })
+    
+    .then(res => res.json())
+    .then(data => {
+        alert('Gif Deleted!');
+        location.reload(true);
+      })
+    .catch(error => console.log(error))
+}
+export function editGifClicks(id){
+    fetch(`https://63bdd384e348cb0762043976.mockapi.io/gifs/${id}`)
+    .then(response => response.json())
+    .then(data => {
+        const currentClicks = data.clicks;
+        const newClicks = currentClicks + 1;
+        return fetch(`https://63bdd384e348cb0762043976.mockapi.io/gifs/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                clicks: newClicks,    
+            })
+        });
+    })
+    .then(response => response.json()) 
+    .catch(error => alert(error))
 }

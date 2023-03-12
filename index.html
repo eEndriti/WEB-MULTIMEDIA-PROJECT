@@ -16,6 +16,7 @@
     <div class="tip d-flex justify-content-center mt-5 ">
         <h2 class="border-bottom border-dark">Tip:For a better view on codes,go by categories!</h2>
     </div>
+    
     <br><br>
     
     <section id="topAni" class="container-fluid m-0 p-0">  
@@ -136,5 +137,12 @@
     getFooter('footer')
     MostClickedGifs('gif',4)
     MostClickedCategories('MostClickedCategories',6)
+    
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
 </script>
 </html>

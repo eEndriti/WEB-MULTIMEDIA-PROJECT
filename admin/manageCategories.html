@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
+    <title>Manage Gifs</title>
+</head>
+<body>
+    <nav id="nav"> 
+
+    </nav>
+
+    <section>
+        <center>
+         <div id="loading" class="lds-ellipsis">
+             <div></div>
+             <div></div>
+             <div></div>
+             <div></div>
+         </div> 
+        </center>
+         <div class="container">
+             <div class="row table-responsive my-4">
+                 <table id="table" class="table-bordered text-light text-center" style="border:1px solid black">
+                    
+                 </table>
+             </div>
+         </div>
+     </section>
+
+    <footer id="footer">
+       
+    </footer>
+
+
+    <div class="modal fade" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="editCategoryLabel">Edit Category</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="d-flex flex-column">
+                    <label for="id">Category ID:</label>
+                    <input type="number" name="id" id="category-id" disabled required>
+                    <label for="email">Name:</label>
+                    <input type="name" name="name" id="category-name" required>
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="editCategoryButton">Edit Category</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</body>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+
+    if(localStorage.getItem('kaAdmin') !== 'true'){
+        alert('You need to log in to advance!')
+        location.href = '/admin.html'
+    }
+
+    import {getNavbar,getFooter} from '../modules/main-elements.js'
+    import {getAdminCategories,editCategory,getSpecificCategory,deleteCategory} from '../modules/categories.js'   
+
+    getNavbar('nav','mc')
+    getFooter('footer')
+    getAdminCategories('table')
+
+    const parent = document.querySelector("#table");
+                parent.addEventListener("click", function(event) {
+                    var buttonValue = event.target.getAttribute("value");
+                    if(event.target && event.target.id === "deleteCategory") {
+                        deleteCategory(buttonValue)
+                    }else if(event.target && event.target.id === "editCategory") {
+                        getSpecificCategory(buttonValue) 
+                    }
+            });
+
+    let editCategoryModalbtn = document.getElementById('editCategoryButton')
+    editCategoryModalbtn.addEventListener('click',ev =>{
+            ev.preventDefault()
+           let name = document.getElementById('category-name').value
+           let id = document.getElementById('category-id').value
+           editCategory(name,id)
+    })
+
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
+    <title>Manage Gifs</title>
+</head>
+<body>
+    <nav id="nav"> 
+
+    </nav>
+
+    <section >
+        <div id="loading" class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>  
+        <div id="messages" class="d-flex flex-column align-items-center">
+            
+        </div>
+    </section>
+
+    <footer id="footer">
+       
+    </footer>
+
+</body>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+
+if(localStorage.getItem('kaAdmin') !== 'true'){
+        alert('You need to log in to advance!')
+        location.href = '/admin.html'
+    }
+
+    import {getNavbar,getFooter} from '../modules/main-elements.js'
+    import {getMessages,deleteMsg} from '../modules/manageReqMsg.js'   
+
+    getNavbar('nav','mm')
+    getFooter('footer')
+    getMessages('messages')
+
+    const parent = document.querySelector("#messages");
+                parent.addEventListener("click", function(event) {
+                    var buttonValue = event.target.getAttribute("value");
+                    if(event.target && event.target.id === "deleteMsg") {
+                        deleteMsg(buttonValue)
+                    }
+            });
+
+    let logOut = document.getElementById('lobtn')
+    logOut.addEventListener('click',ev =>{
+        ev.preventDefault()
+        location.href= "/index.html"
+        localStorage.clear()
+    })
+</script>
+</html>

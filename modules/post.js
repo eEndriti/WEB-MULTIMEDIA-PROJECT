@@ -1,4 +1,4 @@
-export function postCode(email,source,html,css,js){
+export function postCode(title,postedBy,email,source,html,css,js){
     document.getElementById('form2').classList.add('d-none')
     document.getElementById('first-text').classList.add('d-none')
     document.getElementById('loading').classList.remove('d-none')
@@ -19,7 +19,9 @@ export function postCode(email,source,html,css,js){
             html: html,                
             css: css,
             js: js,
-            date: date
+            date: date,
+            postedBy:postedBy,
+            title:title
        }         )
        })
        .then(response => response.json())
